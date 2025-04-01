@@ -16,7 +16,7 @@ node ('master'){
        // app = docker.build("amrit96/snake")
     }
     stage('Post-to-dockerhub') {
-    sh 'echo Post-to-dockerhub' 
+        sh 'echo Post-to-dockerhub' 
     // docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
      //       app.push("latest")
      //   			}
@@ -27,7 +27,7 @@ node ('master'){
   
     
     stage('Pull-image-server') {
-    sh 'Pull-image-server' 
+        sh 'Pull-image-server' 
       //   sh "docker-compose down"
       //   sh "docker-compose up -d"	
       }
