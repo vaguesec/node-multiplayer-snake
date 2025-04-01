@@ -4,6 +4,11 @@ node ('ubuntu-app-agent'){
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }  
+    
+    stage('Install Dependencies') {
+        sh 'rm -rf node_modules'  // پاک کردن کش قدیمی
+        sh 'npm install'  // نصب پکیج‌ها
+    }
    // stage('SAST'){
    //     build 'SECURITY-SAST-SNYK'
    // }
@@ -13,7 +18,7 @@ node ('ubuntu-app-agent'){
         
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("amrit96/snake")
+        app = docker.build("amrit96/snake", "--no-cache .")
     }
     stage('Post-to-dockerhub') {
          sh 'echo Post tp dockerhub'
